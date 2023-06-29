@@ -155,6 +155,7 @@ class Marker {
   final ValueChanged<LatLng>? onDragEnd;
 
   appleMaps.Annotation get appleMapsAnnotation => appleMaps.Annotation(
+        zIndex: this.position.latitude + this.position.longitude,
         annotationId: this.markerId.appleMapsAnnoationId,
         alpha: this.alpha,
         anchor: this.anchor,
@@ -172,6 +173,7 @@ class Marker {
       );
 
   googleMaps.Marker get googleMapsMarker => googleMaps.Marker(
+        zIndex: this.position.latitude + this.position.longitude,
         markerId: this.markerId.googleMapsMarkerId,
         alpha: this.alpha,
         anchor: this.anchor,
@@ -190,6 +192,7 @@ class Marker {
 
   static appleMaps.Annotation appleMapsAnnotationFromMarker(Marker marker) =>
       appleMaps.Annotation(
+        zIndex: marker.position.latitude + marker.position.longitude,
         annotationId: marker.markerId.appleMapsAnnoationId,
         alpha: marker.alpha,
         anchor: marker.anchor,
@@ -208,6 +211,7 @@ class Marker {
 
   static googleMaps.Marker googleMapsMarkerFromMarker(Marker marker) =>
       googleMaps.Marker(
+        zIndex: marker.position.latitude + marker.position.longitude,
         markerId: marker.markerId.googleMapsMarkerId,
         alpha: marker.alpha,
         anchor: marker.anchor,
