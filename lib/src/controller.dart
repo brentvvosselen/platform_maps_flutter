@@ -118,4 +118,15 @@ class PlatformMapController {
       return this.googleController!.takeSnapshot();
     }
   }
+
+  /// Returns the zoomLevel of the map.
+  Future<double?> getZoomLevel() {
+    if (Platform.isIOS) {
+      return this.appleController!.getZoomLevel();
+    }
+    if (Platform.isAndroid) {
+      return this.googleController!.getZoomLevel();
+    }
+    return Future.value(null);
+  }
 }
