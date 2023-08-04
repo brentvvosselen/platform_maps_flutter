@@ -20,6 +20,7 @@ class PlatformMap extends StatefulWidget {
     this.tiltGesturesEnabled = true,
     this.myLocationEnabled = false,
     this.myLocationButtonEnabled = false,
+    this.mapToolbarEnabled = true,
     this.padding = const EdgeInsets.all(0),
     this.trafficEnabled = false,
     this.markers = const <Marker>{},
@@ -43,6 +44,9 @@ class PlatformMap extends StatefulWidget {
 
   /// True if the map should show a compass when rotated.
   final bool compassEnabled;
+
+  /// True if the map (on Android) should show the maptoolbar when a pinpoint is clicked.
+  final bool mapToolbarEnabled;
 
   /// Type of map tiles to be rendered.
   final MapType mapType;
@@ -172,6 +176,7 @@ class _PlatformMapState extends State<PlatformMap> {
   Widget build(BuildContext context) {
     if (Platform.isAndroid) {
       return googleMaps.GoogleMap(
+        mapToolbarEnabled: widget.mapToolbarEnabled,
         initialCameraPosition:
             widget.initialCameraPosition.googleMapsCameraPosition,
         compassEnabled: widget.compassEnabled,
