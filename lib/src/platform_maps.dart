@@ -174,7 +174,7 @@ class PlatformMap extends StatefulWidget {
 class _PlatformMapState extends State<PlatformMap> {
   @override
   Widget build(BuildContext context) {
-    if (Platform.isAndroid) {
+    if (kIsWeb || Platform.isAndroid) {
       return googleMaps.GoogleMap(
         mapToolbarEnabled: widget.mapToolbarEnabled,
         initialCameraPosition:
@@ -258,21 +258,21 @@ class _PlatformMapState extends State<PlatformMap> {
   }
 
   void _onTap(dynamic position) {
-    if (Platform.isIOS) {
-      widget.onTap?.call(LatLng._fromAppleLatLng(position as appleMaps.LatLng));
-    } else if (Platform.isAndroid) {
+    if (kIsWeb || Platform.isAndroid) {
       widget.onTap
           ?.call(LatLng._fromGoogleLatLng(position as googleMaps.LatLng));
+    } else if (Platform.isIOS) {
+      widget.onTap?.call(LatLng._fromAppleLatLng(position as appleMaps.LatLng));
     }
   }
 
   void _onLongPress(dynamic position) {
-    if (Platform.isIOS) {
-      widget.onLongPress
-          ?.call(LatLng._fromAppleLatLng(position as appleMaps.LatLng));
-    } else if (Platform.isAndroid) {
+    if (kIsWeb || Platform.isAndroid) {
       widget.onLongPress
           ?.call(LatLng._fromGoogleLatLng(position as googleMaps.LatLng));
+    } else if (Platform.isIOS) {
+      widget.onLongPress
+          ?.call(LatLng._fromAppleLatLng(position as appleMaps.LatLng));
     }
   }
 
