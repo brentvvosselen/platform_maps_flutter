@@ -17,8 +17,8 @@ dependencies:
   google_maps_flutter_platform_interface: ^2.4.0
   apple_maps_flutter:
     git:
-      url: https://github.com/LuisThein/apple_maps_flutter.git
-      ref: a1566f0
+      url: https://github.com/Anjula/apple_maps_flutter.git
+      ref: cb853b3f3b86b3453559bf35f632696bb0357234
 
 dev_dependencies:
   flutter_test:
